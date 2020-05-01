@@ -19,19 +19,19 @@ import javax.swing.SwingUtilities;
 public class ScaryMaze extends JPanel implements Runnable, MouseMotionListener {
 	
 	BufferedImage maze;
-	final int frameWidth = 500;
-	final int frameHeight = 500;
+	final int frameWidth = 1000;
+	final int frameHeight = 1000;
 
 	ScaryMaze() throws Exception {
 		//1. Use this online tool to make a maze image and drop it into your section5 package: https://www.pixilart.com/
-		//maze = ImageIO.read(getClass().getResource("standardMaze.jpg"));
+		maze = ImageIO.read(getClass().getResource("pixil-frame-0(2).png"));
 		//2. Change the line of code above so that it matches your maze's file name
 		
 		//3. Set the mouse pointer to the start of your maze using:
-		//new Robot().mouseMove(45, 95);
+		new Robot().mouseMove(10, 250);
 		
 		//4. Add a mouse motion listener using:
-		//addMouseMotionListener(this);
+		addMouseMotionListener(this);
 		
 	}
 
@@ -42,11 +42,20 @@ public class ScaryMaze extends JPanel implements Runnable, MouseMotionListener {
 		int mouseColor = maze.getRGB(mouseX, mouseY);
 		//5. Print the mouseColor variable 
 		
+		System.out.println(mouseColor);
+		
+		int background = 0;
+		
 		//6.  Run your program and put your mouse over the background to find out what color it is
 		
 		//7. Create an int variable that holds the background color. 
 		
 		//8. If the mouse falls off the path (if it is on the background)
+		
+		if ( mouseColor != background) {
+			scare();
+		
+		}
 	
 				// call the scare method
 		
@@ -66,7 +75,7 @@ public class ScaryMaze extends JPanel implements Runnable, MouseMotionListener {
 		//11. Play the scary sound. Hint: type "sound" and then a period.		
 		
 		//12. Drop an image into your section5 package, and use the showScaryImage method to scare your victim!
-		
+		showScaryImage("standardScaryPicture.jpg");
 	}
 
 	private void showScaryImage(String imageName) {
